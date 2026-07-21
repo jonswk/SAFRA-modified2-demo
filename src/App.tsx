@@ -247,7 +247,7 @@ export default function App() {
                 url: article.url,
                 identifier: article.id,
                 title: article.title,
-                language: 'zh_TW' // Traditional Chinese (Taiwan) / Traditional Chinese as requested by user template
+                language: 'en' // English language configuration
               }}
             />
           </div>
