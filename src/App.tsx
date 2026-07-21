@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { DiscussionEmbed, CommentCount } from 'disqus-react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import DemoToolbar from './components/DemoToolbar';
@@ -8,6 +9,12 @@ import RegistrationSuccess from './components/RegistrationSuccess';
 import MemberPortal from './components/MemberPortal';
 import ComparisonPage from './components/ComparisonPage';
 import { ViewState } from './types';
+
+const article = {
+  url: 'https://safra-modified2-demo.vercel.app',
+  id: 'safra-portal-redesign-discussion-v2',
+  title: 'SAFRA Portal Redesign & UX Improvements'
+};
 
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewState>('LANDING');
@@ -206,6 +213,46 @@ export default function App() {
           />
         )}
       </main>
+
+      {/* 💬 Disqus Feedback Forum Section */}
+      <div className="bg-white border-t border-gray-200 py-10 px-4 sm:px-6 lg:px-8 shadow-inner" id="disqus-comments-section">
+        <div className="max-w-4xl mx-auto text-left">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-100 pb-4 mb-6 gap-3">
+            <div>
+              <h3 className="text-sm font-black text-gray-800 uppercase tracking-wider flex items-center gap-2">
+                <span className="bg-safra-red text-white text-[9px] font-black px-1.5 py-0.5 rounded tracking-wide">COMMUNITY FEEDBACK</span>
+                SAFRA Portal Feedback Forum
+              </h3>
+              <p className="text-[11px] text-gray-500 mt-0.5">Share your feedback, ideas, and suggestions on the newly proposed portal design.</p>
+            </div>
+            
+            <div className="text-xs font-semibold text-gray-600 bg-gray-50 border border-gray-200 rounded px-2.5 py-1.5 self-start sm:self-auto flex items-center gap-1.5">
+              <CommentCount
+                shortname="https-safra-modified2-demo-vercel-app"
+                config={{
+                  url: article.url,
+                  identifier: article.id,
+                  title: article.title,
+                }}
+              >
+                Comments
+              </CommentCount>
+            </div>
+          </div>
+
+          <div className="bg-slate-50 border border-slate-100 rounded-lg p-5">
+            <DiscussionEmbed
+              shortname="https-safra-modified2-demo-vercel-app"
+              config={{
+                url: article.url,
+                identifier: article.id,
+                title: article.title,
+                language: 'zh_TW' // Traditional Chinese (Taiwan) / Traditional Chinese as requested by user template
+              }}
+            />
+          </div>
+        </div>
+      </div>
 
       {/* Footer copyright section */}
       <Footer />
