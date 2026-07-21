@@ -8,6 +8,7 @@ import RegistrationForm from './components/RegistrationForm';
 import RegistrationSuccess from './components/RegistrationSuccess';
 import MemberPortal from './components/MemberPortal';
 import ComparisonPage from './components/ComparisonPage';
+import FeedbackPage from './components/FeedbackPage';
 import { ViewState } from './types';
 
 const article = {
@@ -17,6 +18,13 @@ const article = {
 };
 
 export default function App() {
+  const [isInIframe] = useState(() => {
+    try {
+      return typeof window !== 'undefined' && window.self !== window.top;
+    } catch (e) {
+      return true;
+    }
+  });
   const [currentView, setCurrentView] = useState<ViewState>('LANDING');
   const [userEmail, setUserEmail] = useState('jonathang@gmail.com');
   const [userName, setUserName] = useState('Jonathan');
@@ -212,47 +220,82 @@ export default function App() {
             onNavigate={handleNavigate}
           />
         )}
+
+        {currentView === 'FEEDBACK' && (
+          <FeedbackPage 
+            article={article}
+            isInIframe={isInIframe}
+          />
+        )}
       </main>
 
-      {/* 💬 Disqus Feedback Forum Section */}
-      <div className="bg-white border-t border-gray-200 py-10 px-4 sm:px-6 lg:px-8 shadow-inner" id="disqus-comments-section">
-        <div className="max-w-4xl mx-auto text-left">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-100 pb-4 mb-6 gap-3">
-            <div>
-              <h3 className="text-sm font-black text-gray-800 uppercase tracking-wider flex items-center gap-2">
-                <span className="bg-safra-red text-white text-[9px] font-black px-1.5 py-0.5 rounded tracking-wide">COMMUNITY FEEDBACK</span>
-                SAFRA Portal Feedback Forum
-              </h3>
-              <p className="text-[11px] text-gray-500 mt-0.5">Share your feedback, ideas, and suggestions on the newly proposed portal design.</p>
+      {/* 💬 Disqus Feedback Forum Section - Only visible on the webpage usability redesign page (Comparison view) */}
+      {currentView === 'COMPARISON' && (
+        <div className="bg-white border-t border-gray-200 py-10 px-4 sm:px-6 lg:px-8 shadow-inner" id="disqus-comments-section">
+          <div className="max-w-4xl mx-auto text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-100 pb-4 mb-6 gap-3">
+              <div>
+                <h3 className="text-sm font-black text-gray-800 uppercase tracking-wider flex items-center gap-2">
+                  <span className="bg-safra-red text-white text-[9px] font-black px-1.5 py-0.5 rounded tracking-wide">COMMUNITY FEEDBACK</span>
+                  SAFRA Portal Feedback Forum
+                </h3>
+                <p className="text-[11px] text-gray-500 mt-0.5">Share your feedback, ideas, and suggestions on the newly proposed portal design.</p>
+              </div>
+              
+              <div className="text-xs font-semibold text-gray-600 bg-gray-50 border border-gray-200 rounded px-2.5 py-1.5 self-start sm:self-auto flex items-center gap-1.5">
+                <CommentCount
+                  shortname="https-safra-modified2-demo-vercel-app"
+                  config={{
+                    url: article.url,
+                    identifier: article.id,
+                    title: article.title,
+                  }}
+                >
+                  {/* Placeholder Text */}
+                  Comments
+                </CommentCount>
+              </div>
             </div>
-            
-            <div className="text-xs font-semibold text-gray-600 bg-gray-50 border border-gray-200 rounded px-2.5 py-1.5 self-start sm:self-auto flex items-center gap-1.5">
-              <CommentCount
+
+            {isInIframe && (
+              <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-900 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex items-start gap-3">
+                  <span className="text-lg leading-none mt-0.5">⚠️</span>
+                  <div>
+                    <h4 className="font-bold text-amber-950">Browser Sandbox Restriction Active (Embedded Preview Frame)</h4>
+                    <p className="mt-1 text-amber-800 leading-relaxed">
+                      Modern browsers block third-party cookies and session storage access when web applications are loaded inside embedded iframes. This stops Disqus from authenticating your session, which will prevent you from writing or inserting comments.
+                    </p>
+                    <p className="mt-1.5 font-medium text-amber-900">
+                      To write comments, please open the application in its own browser tab!
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href={typeof window !== 'undefined' ? window.location.href : '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white font-bold px-3 py-2 rounded shadow-sm text-center transition-colors flex items-center justify-center gap-1"
+                >
+                  Open App in New Tab ↗
+                </a>
+              </div>
+            )}
+
+            <div className="bg-slate-50 border border-slate-100 rounded-lg p-5">
+              <DiscussionEmbed
                 shortname="https-safra-modified2-demo-vercel-app"
                 config={{
                   url: article.url,
                   identifier: article.id,
                   title: article.title,
+                  language: 'en' //e.g. for Traditional Chinese (Taiwan)
                 }}
-              >
-                Comments
-              </CommentCount>
+              />
             </div>
           </div>
-
-          <div className="bg-slate-50 border border-slate-100 rounded-lg p-5">
-            <DiscussionEmbed
-              shortname="https-safra-modified2-demo-vercel-app"
-              config={{
-                url: article.url,
-                identifier: article.id,
-                title: article.title,
-                language: 'en' // English language configuration
-              }}
-            />
-          </div>
         </div>
-      </div>
+      )}
 
       {/* Footer copyright section */}
       <Footer />

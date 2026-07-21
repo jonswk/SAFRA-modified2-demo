@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layers, CheckCircle2, ShieldAlert, FileText, Landmark, UserCheck, Zap, ArrowLeftRight } from 'lucide-react';
+import { Layers, CheckCircle2, ShieldAlert, FileText, Landmark, UserCheck, Zap, ArrowLeftRight, MessageSquare } from 'lucide-react';
 import { ViewState } from '../types';
 
 interface DemoToolbarProps {
@@ -64,6 +64,13 @@ export default function DemoToolbar({ currentView, onSelectView }: DemoToolbarPr
       icon: ArrowLeftRight,
       color: 'bg-slate-700 text-white hover:bg-slate-600',
       desc: 'Nielsen\'s Usability Heuristics comparison with visual side-by-side mockups'
+    },
+    {
+      value: 'FEEDBACK',
+      label: '9. Feedback',
+      icon: MessageSquare,
+      color: 'bg-indigo-600 text-white hover:bg-indigo-500',
+      desc: 'Community feedback & suggestions forum powered by Disqus'
     }
   ];
 

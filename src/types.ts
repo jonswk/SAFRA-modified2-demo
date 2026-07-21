@@ -22,7 +22,8 @@ export type ViewState =
   | 'REGISTER_SYS_ERROR'
   | 'REGISTER_SUCCESS'
   | 'MEMBER_PORTAL'
-  | 'COMPARISON';
+  | 'COMPARISON'
+  | 'FEEDBACK';
 
 export interface AlertBanner {
   type: 'error' | 'success' | 'info';
