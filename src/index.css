@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Hanken Grotesk", "Roboto", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-safra-red: #ED1C24;
+  --color-safra-red-dark: #b71c1c;
+  --color-safra-gray-bg: #f5f3f3;
+  --color-safra-charcoal: #333333;
+}
+
+/* Custom transitions and helper classes */
+.form-section-header {
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #4b5563;
+  letter-spacing: 0.025em;
+}
+
+.input-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #555555;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+.custom-input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  outline: none;
+  background-color: transparent;
+  transition: border-bottom-color 0.2s ease;
+}
+
+.custom-input:focus {
+  border-bottom: 2px solid #ED1C24;
+}
+
+.required-mark {
+  color: #ED1C24;
+  margin-left: 2px;
+}
+

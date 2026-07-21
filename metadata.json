@@ -1,0 +1,6 @@
+{
+  "name": "SAFRA Portal",
+  "description": "Interactive SAFRA membership portal featuring the SAFRA lifestyle landing page, a multi-step registration flow, form validation, simulated error scenarios, and a member dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
