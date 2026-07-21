@@ -50,7 +50,7 @@ export default function App() {
           <div className="flex items-center gap-2 flex-wrap">
             <span className="bg-safra-red text-white text-[9px] font-black px-1.5 py-0.5 rounded tracking-wide uppercase">Website Changes</span>
             <span className="text-slate-300 font-medium">
-              Implemented Singpass login simulation auto-populating 7 fields (Email, Name, Nationality, NRIC Last 4, Gender, DOB, Mobile), added show/hide password toggles, decoupled Member ID validation to be fully optional, and added inline helper guides.
+              Redesigned and optimized the registration flow with 1-click Singpass prefill, real-time password requirement indicators, and a fully optional Member ID to eliminate legacy onboarding friction and improve usability.
             </span>
           </div>
           <button
