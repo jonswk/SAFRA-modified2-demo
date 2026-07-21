@@ -67,6 +67,7 @@ export default function App() {
         )}
 
         {(currentView === 'REGISTER_EMPTY' || 
+          currentView === 'REGISTER_SINGPASS' ||
           currentView === 'REGISTER_PW_ERROR' || 
           currentView === 'REGISTER_SYS_ERROR') && (
           <RegistrationForm 

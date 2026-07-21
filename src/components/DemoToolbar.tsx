@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layers, CheckCircle2, ShieldAlert, FileText, Landmark, UserCheck } from 'lucide-react';
+import { Layers, CheckCircle2, ShieldAlert, FileText, Landmark, UserCheck, Zap } from 'lucide-react';
 import { ViewState } from '../types';
 
 interface DemoToolbarProps {
@@ -18,35 +18,42 @@ export default function DemoToolbar({ currentView, onSelectView }: DemoToolbarPr
     },
     {
       value: 'REGISTER_EMPTY',
-      label: '2. Register Form',
+      label: '2. Empty Form',
       icon: FileText,
       color: 'bg-blue-600 text-white hover:bg-blue-500',
       desc: 'Interactive blank 3-column registration'
     },
     {
+      value: 'REGISTER_SINGPASS',
+      label: '3. Singpass Prefilled',
+      icon: Zap,
+      color: 'bg-red-600 text-white hover:bg-red-500',
+      desc: 'Singpass authenticated: Prefilled Name, NRIC, DOB, Gender, Nationality, Mobile, Email'
+    },
+    {
       value: 'REGISTER_PW_ERROR',
-      label: '3. Password Error State',
+      label: '4. Password Error',
       icon: ShieldAlert,
       color: 'bg-amber-600 text-white hover:bg-amber-500',
       desc: 'Mockup 3: Detailed complexity error guidelines'
     },
     {
       value: 'REGISTER_SYS_ERROR',
-      label: '4. System Error State',
+      label: '5. System Error',
       icon: ShieldAlert,
       color: 'bg-rose-700 text-white hover:bg-rose-600',
       desc: 'Mockup 1: "Unable to create online account" top banner'
     },
     {
       value: 'REGISTER_SUCCESS',
-      label: '5. Success Screen',
+      label: '6. Success Screen',
       icon: CheckCircle2,
       color: 'bg-emerald-600 text-white hover:bg-emerald-500',
       desc: 'Clean signup success, instructions & mock email'
     },
     {
       value: 'MEMBER_PORTAL',
-      label: '6. Member Dashboard',
+      label: '7. Member Dashboard',
       icon: UserCheck,
       color: 'bg-purple-600 text-white hover:bg-purple-500',
       desc: 'Virtual card, membership details, facility booking'

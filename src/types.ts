@@ -17,6 +17,7 @@ export interface RegistrationData {
 export type ViewState =
   | 'LANDING'
   | 'REGISTER_EMPTY'
+  | 'REGISTER_SINGPASS'
   | 'REGISTER_PW_ERROR'
   | 'REGISTER_SYS_ERROR'
   | 'REGISTER_SUCCESS'

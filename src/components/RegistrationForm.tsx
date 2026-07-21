@@ -119,6 +119,24 @@ export default function RegistrationForm({
       setGlobalError(
         'Failed to register. Error: Unable to create online account. For further assistance, please email to membership@safra.sg.'
       );
+    } else if (currentView === 'REGISTER_SINGPASS') {
+      setRegFlow('MEMBER');
+      setName('JONATHAN GOH WEI JIE');
+      setNationality('Singaporean');
+      setNric('567A');
+      setGender('Male');
+      setDob('1994-06-18');
+      setMobileCountry('65');
+      setMobileNo('91234567');
+      setEmail('jonathan.goh@gmail.com');
+      setMemberId('');
+      setEmailAck(true);
+      setTermsAck(true);
+      setCaptchaAck(true);
+      setCaptchaInput('4R8H7K');
+      setPrefillSource('SINGPASS');
+      setPrefilledFields(['name', 'nationality', 'nric', 'gender', 'dob', 'mobile', 'email', 'emailAck', 'termsAck', 'captcha']);
+      setPrefillSuccessMsg('✨ Simulating active Singpass Session: NRIC, Nationality, Gender, Date of Birth, Mobile, and Email were retrieved securely from government registries. Please choose a password below to finalize account.');
     } else {
       setRegFlow('MEMBER');
       // Reset for clean slate
@@ -256,19 +274,6 @@ export default function RegistrationForm({
         setGlobalError('Please fill out all the required fields indicated with a red asterisk (*)');
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
-      }
-
-      // Check if membership ID is empty/not entered (only if registering as full member)
-      if (regFlow === 'MEMBER') {
-        if (!memberId || !memberId.trim() || memberId === 'Forgot Member ID?') {
-          errors.memberId = 'Member ID is required to link existing membership';
-          setFormErrors(errors);
-          setGlobalError(
-            'Failed to register. Error: Unable to create online account. For further assistance, please email to membership@safra.sg.'
-          );
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          return;
-        }
       }
 
       // 2. Complex Password validation
@@ -868,7 +873,7 @@ export default function RegistrationForm({
                     {/* Member ID */}
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <label className="input-label block mb-0">Member ID <span className="required-mark">*</span></label>
+                        <label className="input-label block mb-0">Member ID <span className="text-[10px] text-gray-400 font-normal">(Optional)</span></label>
                         {prefilledFields.includes('memberId') && (
                           <span className="text-[9px] text-emerald-600 font-extrabold bg-emerald-50 px-1.5 py-0.5 rounded flex items-center gap-0.5 animate-pulse">
                             <Sparkles className="w-2.5 h-2.5" /> Prefilled ({prefillSource})
@@ -877,7 +882,6 @@ export default function RegistrationForm({
                       </div>
                       <input
                         type="text"
-                        required={regFlow === 'MEMBER'}
                         value={memberId}
                         onChange={(e) => {
                           setMemberId(e.target.value);
