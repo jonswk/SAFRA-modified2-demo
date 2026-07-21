@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layers, CheckCircle2, ShieldAlert, FileText, Landmark, UserCheck, Zap, ArrowLeftRight, MessageSquare } from 'lucide-react';
+import { Layers, CheckCircle2, ShieldAlert, FileText, Landmark, UserCheck, Zap, ArrowLeftRight, MessageSquare, ExternalLink } from 'lucide-react';
 import { ViewState } from '../types';
 
 interface DemoToolbarProps {
@@ -110,6 +110,19 @@ export default function DemoToolbar({ currentView, onSelectView }: DemoToolbarPr
               </button>
             );
           })}
+          
+          {/* 🔗 Old Web Redirect Tab */}
+          <a
+            href="https://safra-current-demo.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-bold transition-all shadow-sm cursor-pointer bg-slate-800 text-slate-300 hover:bg-rose-900 hover:text-white border border-rose-900/30"
+            title="Go to previous website"
+            id="demo-btn-old-web"
+          >
+            <ExternalLink className="w-3.5 h-3.5 text-rose-400" />
+            <span className="truncate">Old Web ↗</span>
+          </a>
         </div>
       </div>
     </div>
