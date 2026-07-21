@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layers, CheckCircle2, ShieldAlert, FileText, Landmark, UserCheck, Zap } from 'lucide-react';
+import { Layers, CheckCircle2, ShieldAlert, FileText, Landmark, UserCheck, Zap, ArrowLeftRight } from 'lucide-react';
 import { ViewState } from '../types';
 
 interface DemoToolbarProps {
@@ -57,6 +57,13 @@ export default function DemoToolbar({ currentView, onSelectView }: DemoToolbarPr
       icon: UserCheck,
       color: 'bg-purple-600 text-white hover:bg-purple-500',
       desc: 'Virtual card, membership details, facility booking'
+    },
+    {
+      value: 'COMPARISON',
+      label: '8. UX Heuristics Audit',
+      icon: ArrowLeftRight,
+      color: 'bg-slate-700 text-white hover:bg-slate-600',
+      desc: 'Nielsen\'s Usability Heuristics comparison with visual side-by-side mockups'
     }
   ];
 

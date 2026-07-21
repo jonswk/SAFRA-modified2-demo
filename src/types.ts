@@ -21,7 +21,8 @@ export type ViewState =
   | 'REGISTER_PW_ERROR'
   | 'REGISTER_SYS_ERROR'
   | 'REGISTER_SUCCESS'
-  | 'MEMBER_PORTAL';
+  | 'MEMBER_PORTAL'
+  | 'COMPARISON';
 
 export interface AlertBanner {
   type: 'error' | 'success' | 'info';
